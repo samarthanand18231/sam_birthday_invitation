@@ -119,43 +119,56 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 200px;
+      width: 280px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
+      gap: -10px;
     }
 
     .cake-layer {
-      border-radius: 50%;
+      border-radius: 16px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 4px solid #000;
     }
 
     .cake-layer-1 {
-      background: linear-gradient(180deg, #FFB6C1 0%, #FF69B4 100%);
+      background: #FF3333;
       width: 200px;
-      height: 60px;
-      box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      height: 55px;
+      box-shadow: 0 15px 35px rgba(255, 51, 51, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
       animation: layerBounce 3s ease-in-out infinite;
+      margin-bottom: -8px;
+      z-index: 3;
     }
 
     .cake-layer-2 {
-      background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
-      width: 160px;
-      height: 50px;
-      box-shadow: 0 12px 30px rgba(255, 165, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      background: #87CEEB;
+      width: 260px;
+      height: 65px;
+      box-shadow: 0 12px 30px rgba(135, 206, 235, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
       animation: layerBounce 3s ease-in-out infinite 0.15s;
+      margin-bottom: -8px;
+      z-index: 2;
     }
 
     .cake-layer-3 {
-      background: linear-gradient(180deg, #FF69B4 0%, #FFB6C1 100%);
-      width: 120px;
-      height: 45px;
-      box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      background: #FFFF00;
+      width: 320px;
+      height: 70px;
+      box-shadow: 0 10px 25px rgba(255, 255, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
       animation: layerBounce 3s ease-in-out infinite 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #4169E1;
+      z-index: 1;
     }
 
     @keyframes layerBounce {
@@ -164,45 +177,41 @@
     }
 
     .cake-plate {
-      width: 240px;
-      height: 20px;
-      background: linear-gradient(180deg, #A0522D 0%, #8B4513 100%);
-      border-radius: 50%;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(139, 69, 19, 0.5);
+      display: none;
     }
 
     .candles-container {
       position: absolute;
-      top: -65px;
+      top: -120px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 10px;
+      gap: 40px;
       justify-content: center;
       width: 240px;
-      height: 80px;
+      height: 120px;
     }
 
     .candle {
-      width: 10px;
-      height: 50px;
-      background: linear-gradient(to bottom, #FFFACD, #FFE4B5, #FFD700, #FFA500);
-      border-radius: 3px;
+      width: 12px;
+      height: 60px;
+      background: linear-gradient(to bottom, #FFD700 0%, #FFA500 80%, #FF8C00 100%);
+      border-radius: 4px;
       position: relative;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 165, 0, 0.4);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.5);
       animation: candleSway 2.5s ease-in-out infinite;
     }
 
     .candle:nth-child(1) { animation-delay: 0s; }
     .candle:nth-child(2) { animation-delay: 0.1s; }
-    .candle:nth-child(3) { animation-delay: 0.2s; }
-    .candle:nth-child(4) { animation-delay: 0.3s; }
-    .candle:nth-child(5) { animation-delay: 0.4s; }
-    .candle:nth-child(6) { animation-delay: 0.5s; }
-    .candle:nth-child(7) { animation-delay: 0.6s; }
-    .candle:nth-child(8) { animation-delay: 0.7s; }
-    .candle:nth-child(9) { animation-delay: 0.8s; }
-    .candle:nth-child(10) { animation-delay: 0.9s; }
+    .candle:nth-child(3) { display: none; }
+    .candle:nth-child(4) { display: none; }
+    .candle:nth-child(5) { display: none; }
+    .candle:nth-child(6) { display: none; }
+    .candle:nth-child(7) { display: none; }
+    .candle:nth-child(8) { display: none; }
+    .candle:nth-child(9) { display: none; }
+    .candle:nth-child(10) { display: none; }
 
     @keyframes candleSway {
       0%, 100% { transform: rotate(0deg) translateY(0) scaleY(1); }
@@ -213,15 +222,15 @@
 
     .flame {
       position: absolute;
-      top: -18px;
+      top: -30px;
       left: 50%;
       transform: translateX(-50%);
-      width: 6px;
-      height: 18px;
-      background: linear-gradient(to top, #FFD700 0%, #FF6347 70%, #FFA500 100%);
-      border-radius: 50% 50% 50% 0;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 30%, #FFFF00, #FFA500, #FF6347);
+      border-radius: 50%;
       animation: flameFlicker 0.3s ease-in-out infinite, flameFloat 2.5s ease-in-out infinite;
-      filter: drop-shadow(0 0 8px rgba(255, 99, 71, 0.9));
+      filter: drop-shadow(0 0 12px rgba(255, 165, 0, 1));
     }
 
     @keyframes flameFlicker {
@@ -1313,7 +1322,7 @@
         <div class="cake">
           <div class="cake-layer cake-layer-1"></div>
           <div class="cake-layer cake-layer-2"></div>
-          <div class="cake-layer cake-layer-3"></div>
+          <div class="cake-layer cake-layer-3">Samarth Anand</div>
           <div class="cake-plate"></div>
         </div>
         <div class="candles-container">
