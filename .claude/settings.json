@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" commit -m \"Add animated birthday cake with 10 candles at top of website\")"
+    ]
+  }
+}

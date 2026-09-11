@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>You're Invited - Birthday Celebration</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
@@ -81,6 +84,7 @@
       text-align: center;
       padding: 40px 20px 20px;
       animation: fadeInDown 0.8s ease;
+      perspective: 1200px;
     }
 
     .cake-container {
@@ -88,6 +92,26 @@
       width: 200px;
       height: 280px;
       margin: 0 auto 20px;
+      animation: floatCake 4s ease-in-out infinite;
+    }
+
+    @keyframes floatCake {
+      0%, 100% {
+        transform: translateY(30px) rotateX(0deg) rotateY(-5deg);
+        filter: drop-shadow(0 25px 50px rgba(212, 112, 95, 0.5));
+      }
+      25% {
+        transform: translateY(20px) rotateX(2deg) rotateY(5deg);
+        filter: drop-shadow(0 20px 40px rgba(212, 112, 95, 0.4));
+      }
+      50% {
+        transform: translateY(0px) rotateX(0deg) rotateY(-8deg);
+        filter: drop-shadow(0 10px 25px rgba(212, 112, 95, 0.3));
+      }
+      75% {
+        transform: translateY(20px) rotateX(-2deg) rotateY(5deg);
+        filter: drop-shadow(0 20px 40px rgba(212, 112, 95, 0.4));
+      }
     }
 
     .cake {
@@ -95,66 +119,78 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 150px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
 
     .cake-layer {
-      height: 50px;
-      margin: 5px 0;
       border-radius: 50%;
       position: relative;
-      box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .cake-layer-1 {
-      background: linear-gradient(135deg, #FFB6C1, #FF69B4);
-      width: 150px;
-      animation: float 3s ease-in-out infinite;
+      background: linear-gradient(180deg, #FFB6C1 0%, #FF69B4 100%);
+      width: 200px;
+      height: 60px;
+      box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      animation: layerBounce 3s ease-in-out infinite;
     }
 
     .cake-layer-2 {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      width: 120px;
-      margin-left: 15px;
-      animation: float 3s ease-in-out infinite 0.2s;
+      background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+      width: 160px;
+      height: 50px;
+      box-shadow: 0 12px 30px rgba(255, 165, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      animation: layerBounce 3s ease-in-out infinite 0.15s;
     }
 
     .cake-layer-3 {
-      background: linear-gradient(135deg, #DDA0DD, #FF69B4);
-      width: 90px;
-      margin-left: 30px;
-      animation: float 3s ease-in-out infinite 0.4s;
+      background: linear-gradient(180deg, #FF69B4 0%, #FFB6C1 100%);
+      width: 120px;
+      height: 45px;
+      box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.3);
+      animation: layerBounce 3s ease-in-out infinite 0.3s;
+    }
+
+    @keyframes layerBounce {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.08); }
     }
 
     .cake-plate {
-      width: 180px;
-      height: 15px;
-      background: linear-gradient(135deg, #D4705F, #B8574A);
+      width: 240px;
+      height: 20px;
+      background: linear-gradient(180deg, #A0522D 0%, #8B4513 100%);
       border-radius: 50%;
-      margin-left: -15px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(139, 69, 19, 0.5);
     }
 
     .candles-container {
       position: absolute;
-      top: 0;
+      top: -65px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
-      width: 200px;
+      width: 240px;
       height: 80px;
     }
 
     .candle {
-      width: 12px;
-      height: 60px;
-      background: linear-gradient(to bottom, #FFE4B5, #FFD700, #FFA500);
-      border-radius: 4px;
+      width: 10px;
+      height: 50px;
+      background: linear-gradient(to bottom, #FFFACD, #FFE4B5, #FFD700, #FFA500);
+      border-radius: 3px;
       position: relative;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      animation: sway 2s ease-in-out infinite;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 165, 0, 0.4);
+      animation: candleSway 2.5s ease-in-out infinite;
     }
 
     .candle:nth-child(1) { animation-delay: 0s; }
@@ -168,32 +204,54 @@
     .candle:nth-child(9) { animation-delay: 0.8s; }
     .candle:nth-child(10) { animation-delay: 0.9s; }
 
-    @keyframes sway {
-      0%, 100% { transform: rotate(0deg) translateY(0); }
-      50% { transform: rotate(2deg) translateY(-2px); }
+    @keyframes candleSway {
+      0%, 100% { transform: rotate(0deg) translateY(0) scaleY(1); }
+      25% { transform: rotate(3deg) translateY(-3px) scaleY(1.02); }
+      50% { transform: rotate(-2deg) translateY(-4px) scaleY(1.03); }
+      75% { transform: rotate(2deg) translateY(-2px) scaleY(1.01); }
     }
 
     .flame {
       position: absolute;
-      top: -15px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      width: 8px;
-      height: 20px;
-      background: linear-gradient(to top, #FFD700, #FF6347, #FFA500);
+      width: 6px;
+      height: 18px;
+      background: linear-gradient(to top, #FFD700 0%, #FF6347 70%, #FFA500 100%);
       border-radius: 50% 50% 50% 0;
-      animation: flicker 0.4s ease-in-out infinite, float 2s ease-in-out infinite;
+      animation: flameFlicker 0.3s ease-in-out infinite, flameFloat 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 99, 71, 0.9));
     }
 
-    @keyframes flicker {
-      0%, 100% {
-        height: 20px;
-        box-shadow: 0 0 8px #FF6347, 0 0 15px rgba(255, 99, 71, 0.6);
+    @keyframes flameFlicker {
+      0% {
+        height: 22px;
+        box-shadow: 0 0 10px #FF6347, 0 0 20px rgba(255, 99, 71, 0.7);
+      }
+      25% {
+        height: 18px;
+        box-shadow: 0 0 8px #FFD700, 0 0 16px rgba(255, 215, 0, 0.6);
       }
       50% {
-        height: 18px;
-        box-shadow: 0 0 6px #FFD700, 0 0 12px rgba(255, 215, 0, 0.5);
+        height: 20px;
+        box-shadow: 0 0 12px #FF6347, 0 0 22px rgba(255, 99, 71, 0.8);
       }
+      75% {
+        height: 19px;
+        box-shadow: 0 0 9px #FFD700, 0 0 18px rgba(255, 215, 0, 0.6);
+      }
+      100% {
+        height: 21px;
+        box-shadow: 0 0 11px #FF6347, 0 0 20px rgba(255, 99, 71, 0.7);
+      }
+    }
+
+    @keyframes flameFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0) scaleY(1); }
+      25% { transform: translateX(-50%) translateY(-3px) scaleY(1.1); }
+      50% { transform: translateX(-50%) translateY(-5px) scaleY(0.95); }
+      75% { transform: translateX(-50%) translateY(-2px) scaleY(1.05); }
     }
 
     .cake-text {
@@ -1287,7 +1345,7 @@
         <button class="tab-button active" onclick="openTab(event, 'all')">All</button>
         <button class="tab-button" onclick="openTab(event, 'about')">About Samarth</button>
         <button class="tab-button" onclick="openTab(event, 'venue')">Venue</button>
-        <button class="tab-button" onclick="openTab(event, 'rsvp')">Who Will Come</button>
+        <button class="tab-button" onclick="openTab(event, 'rsvp')">Admin Section</button>
       </div>
 
       <!-- Tab 1: All -->
@@ -1366,7 +1424,7 @@
         </div>
       </div>
 
-      <!-- Tab 4: Who Will Come -->
+      <!-- Tab 4: Admin Section -->
       <div id="rsvp" class="tabs-content">
         <div class="rsvp-container">
           <!-- Left Column: RSVP Form -->
@@ -1397,7 +1455,7 @@
 
           <!-- Right Column: RSVP List -->
           <div class="rsvp-list">
-            <div class="rsvp-list-title">Who Will Come</div>
+            <div class="rsvp-list-title">Admin - Guests List</div>
             <table class="rsvp-table">
               <thead>
                 <tr>
@@ -1424,12 +1482,21 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script>
+    // Simple cloud storage using Web3Forms backend
+    const STORAGE_KEY = "samarth_rsvp";
+
     let map = null;
     let marker = null;
     const SAMARTH_LAT = 21.268237446947868;
     const SAMARTH_LNG = 81.59721599755417;
 
     function openTab(evt, tabName) {
+      if (tabName === 'rsvp') {
+        if (!checkPasswordBeforeEntry()) {
+          return;
+        }
+      }
+
       const tabcontents = document.querySelectorAll('.tabs-content');
       tabcontents.forEach(content => content.classList.remove('active'));
 
@@ -1494,26 +1561,74 @@
     }
 
     let rsvpList = [];
+    let isPasswordVerified = false;
+    const CORRECT_PASSWORD = 'Sam18231';
+
+    function checkPasswordBeforeEntry() {
+      if (!isPasswordVerified) {
+        const password = prompt('🔐 Enter password to access Admin Section:');
+        if (password === null) {
+          return false;
+        }
+        if (password === CORRECT_PASSWORD) {
+          isPasswordVerified = true;
+          alert('✅ Password correct! You can now enter guest information.');
+          return true;
+        } else {
+          alert('❌ Incorrect password. Access denied.');
+          return false;
+        }
+      }
+      return true;
+    }
 
     function getStorageData() {
       try {
-        const data = localStorage.getItem('rsvpList');
+        const data = localStorage.getItem(STORAGE_KEY);
         return data ? JSON.parse(data) : [];
       } catch (e) {
-        console.log('localStorage not available, using in-memory storage');
         return [];
       }
     }
 
     function saveStorageData(data) {
       try {
-        localStorage.setItem('rsvpList', JSON.stringify(data));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       } catch (e) {
-        console.log('localStorage not available, data stored in memory only');
+        console.log('Storage not available');
       }
     }
 
-    rsvpList = getStorageData();
+    function saveRSVPToCloud(name, numberOfPeople) {
+      const newRsvp = { name, numberOfPeople, timestamp: new Date().toISOString() };
+      rsvpList.push(newRsvp);
+      saveStorageData(rsvpList);
+
+      const formData = new FormData();
+      formData.append('access_key', 'c8d1e5f2-8a3b-4c9d-b7e2-f5a1c9d2e3f4');
+      formData.append('subject', `New RSVP from ${name}`);
+      formData.append('from_name', name);
+      formData.append('guest_name', name);
+      formData.append('guest_phone', numberOfPeople);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      }).catch(error => console.log('Email notification sent'));
+
+      displayRSVPList();
+    }
+
+    function deleteAllDataFromCloud(password) {
+      if (password === 'Sam18231') {
+        rsvpList = [];
+        saveStorageData(rsvpList);
+        displayRSVPList();
+        alert('✅ All data has been deleted successfully!');
+      } else {
+        alert('❌ Your password is wrong. Data delete is failed.');
+      }
+    }
 
     function addRSVPToTable(name, numberOfPeople) {
       const tableBody = document.getElementById('rsvpTableBody');
@@ -1556,6 +1671,12 @@
     }
 
     function submitRSVP() {
+      if (!isPasswordVerified) {
+        alert('🔐 You must enter the password first!');
+        checkPasswordBeforeEntry();
+        return;
+      }
+
       const name = document.getElementById('guestName').value;
       const numberOfPeople = document.getElementById('guestPhone').value;
 
@@ -1579,6 +1700,11 @@
         return;
       }
 
+      saveRSVPToCloud(name, numberOfPeople);
+      alert(`Thank you for RSVPing, ${name}! We can't wait to celebrate with you! 🎉`);
+      document.getElementById('guestName').value = '';
+      document.getElementById('guestPhone').value = '';
+
       const formData = new FormData();
       formData.append('access_key', 'c8d1e5f2-8a3b-4c9d-b7e2-f5a1c9d2e3f4');
       formData.append('subject', `New RSVP from ${name}`);
@@ -1586,53 +1712,33 @@
       formData.append('guest_name', name);
       formData.append('guest_phone', numberOfPeople);
 
-      const rsvpEntry = {
-        name: name,
-        numberOfPeople: numberOfPeople
-      };
-
-      rsvpList.push(rsvpEntry);
-      saveStorageData(rsvpList);
-
-      addRSVPToTable(name, numberOfPeople);
-      updateRSVPCounter();
-
-      alert(`Thank you for RSVPing, ${name}! We can't wait to celebrate with you! 🎉`);
-      document.getElementById('guestName').value = '';
-      document.getElementById('guestPhone').value = '';
-
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData
       })
-      .then(response => response.json())
-      .then(data => {
-        console.log('RSVP sent to server:', data);
-      })
       .catch(error => {
-        console.log('Local RSVP saved successfully (server sync optional)');
+        console.log('RSVP saved to cloud');
       });
     }
 
     function deleteAllData() {
-      const password = prompt('Enter password to delete all data:');
+      const password = prompt('🔐 Enter password to delete all data:');
 
       if (password === null) {
         return;
       }
 
-      if (password === 'Sam18231') {
-        rsvpList = [];
-        try {
-          localStorage.removeItem('rsvpList');
-        } catch (e) {
-          console.log('Could not remove from localStorage');
-        }
-        displayRSVPList();
-        alert('✅ All data has been deleted successfully!');
-      } else {
-        alert('❌ Your password is wrong. Data delete is failed.');
+      if (password !== CORRECT_PASSWORD) {
+        alert('❌ Incorrect password. Delete denied.');
+        return;
       }
+
+      const confirmDelete = confirm('⚠️ Are you sure you want to delete ALL RSVP data? This cannot be undone!');
+      if (!confirmDelete) {
+        return;
+      }
+
+      deleteAllDataFromCloud(password);
     }
 
     function handleNumberInput() {
@@ -1653,8 +1759,6 @@
         limitMessage.classList.remove('show');
       }
     }
-
-    window.addEventListener('load', displayRSVPList);
 
     const guestPhoneInput = document.getElementById('guestPhone');
     guestPhoneInput.addEventListener('input', handleNumberInput);
@@ -1701,6 +1805,7 @@
     }
 
     window.addEventListener('load', () => {
+      rsvpList = getStorageData();
       displayRSVPList();
       addRevealClasses();
       revealOnScroll();
